@@ -76,6 +76,15 @@ SOFTWARE.
 #requires -version 3
 
 
+[CmdletBinding()]
+param (
+	
+	[Parameter( Mandatory=$false)]
+	[switch]$ConfigureWindowsDefender
+
+	)
+
+
 #...................................
 # Variables
 #...................................
@@ -389,6 +398,50 @@ if ($IsEdge -or $IsMailbox) {
     ".jrs" | Out-File $outputfile_extensions -Append
     ".log" | Out-File $outputfile_extensions -Append
     ".que" | Out-File $outputfile_extensions -Append
+}
+
+
+#Configure Windows Defender
+
+if ($ConfigureWindowsDefender) {
+
+    if (@(Get-Module Defender -ListAvailable).Count -gt 0) {
+        write-Host -ForegroundColor Green "Windows Defender PowerShell module available."
+
+        $ExclusionPathsList = @(Get-Content $outputfile_paths | Where {$_.ReadCount -gt 2})
+        foreach ($ExclusionPath in $ExclusionPathsList) {
+            try {
+                Add-MpPreference -ExclusionPath $ExclusionPath
+            }
+            catch {
+                Write-Warning $_.Exception.Message
+            }
+        }
+
+        $ExclusionProcsList = @(Get-Content $outputfile_procs | Where {$_.ReadCount -gt 2})
+        foreach ($ExclusionProc in $ExclusionProcsList) {
+            try {
+                Add-MpPreference -ExclusionProcess $ExclusionProc
+            }
+            catch {
+                Write-Warning $_.Exception.Message
+            }
+        }
+
+        $ExclusionExtList = @(Get-Content $outputfile_extensions | Where {$_.ReadCount -gt 2})
+        foreach ($ExclusionExt in $ExclusionExtList) {
+            try {
+                Add-MpPreference -ExclusionExtension $ExclusionExt
+            }
+            catch {
+                Write-Warning $_.Exception.Message
+            }
+        }
+        
+    } else {
+        Write-Warning "Windows Defender PowerShell module not available."
+    }
+
 }
 
 
