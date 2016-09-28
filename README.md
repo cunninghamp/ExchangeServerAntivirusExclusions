@@ -1,4 +1,4 @@
-#Get-Exchange2013AVExclusions.ps1 - Generate list of exclusions for antivirus software.
+#Generate list of exclusions for antivirus software on Exchange 2013/2016 servers
 
 These PowerShell scripts generate a list of file, folder, process file extension exclusions for configuring antivirus software that will be running on an Exchange 2013 or Exchange 2016 servers. The correct exclusions are recommended to prevent antivirus software from interfering with the operation of Exchange Server.
 
@@ -27,6 +27,12 @@ For Exchange 2016 servers:
 
 ```
 .\Get-Exchange2016AVExclusions.ps1
+```
+
+For Exchange 2016 servers running on Windows Server 2016:
+
+```
+.\Get-Exchange2016AVExclusions.ps1 -ConfigureWindowsDefender
 ```
 
 Results are output to text files, which you can import or manually enter in your antivirus configuration.
