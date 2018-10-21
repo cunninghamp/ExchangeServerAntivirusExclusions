@@ -1,4 +1,4 @@
-#Generate list of exclusions for antivirus software on Exchange 2013/2016 servers
+# Generate list of exclusions for antivirus software on Exchange 2013/2016 servers
 
 These PowerShell scripts generate a list of file, folder, process file extension exclusions for configuring antivirus software that will be running on an Exchange 2013 or Exchange 2016 servers. The correct exclusions are recommended to prevent antivirus software from interfering with the operation of Exchange Server.
 
@@ -11,11 +11,11 @@ Use the scripts to generate the exclusion list based on a single server. You can
 
 **Run the script in the Exchange Management Shell locally on the server you wish to generate the exclusions list for**.
 
-##Download
+## Download
 
 You can download the scripts from the [TechNet Script Gallery](https://gallery.technet.microsoft.com/office/Generate-Antivirus-f1a9a59e), or from [Github](https://github.com/cunninghamp/ExchangeServerAntivirusExclusions/releases).
 
-##Usage
+## Usage
 
 For Exchange 2013 servers:
 
@@ -37,23 +37,18 @@ For Exchange 2016 servers running on Windows Server 2016:
 
 Results are output to text files, which you can import or manually enter in your antivirus configuration.
 
-##Credits
-
+## Credits
 Written by: Paul Cunningham
 
 Find me on:
 
-* My Blog:	http://paulcunningham.me
+* My Blog:	https://paulcunningham.me
 * Twitter:	https://twitter.com/paulcunningham
-* LinkedIn:	http://au.linkedin.com/in/cunninghamp/
+* LinkedIn:	https://au.linkedin.com/in/cunninghamp/
 * Github:	https://github.com/cunninghamp
+
+Check out my [books](https://paulcunningham.me/books/) and [courses](https://paulcunningham.me/training/) to learn more about Office 365 and Exchange Server.
 
 Additional credit:
 
 * Matt K (via [blog comment](http://exchangeserverpro.com/powershell-script-exchange-2013-antivirus-exclusions/#comment-244497))
-
-For more Exchange Server tips, tricks and news
-check out Exchange Server Pro.
-
-* Website:	http://exchangeserverpro.com
-* Twitter:	http://twitter.com/exchservpro
